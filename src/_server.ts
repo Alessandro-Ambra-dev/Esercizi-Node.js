@@ -11,8 +11,9 @@ import {
   deleteById,
   createImage,
 } from "./controllers/planets";
-import { logIn, signUp } from "./controllers/users";
+import { logIn, signUp, logOut } from "./controllers/users";
 import multer from "multer";
+import authorize from "./authorize";
 
 const app = express();
 const port = process.env.PORT;
@@ -38,6 +39,7 @@ app
   .post("/api/users/login", logIn)
   .post("/api/users/signup", signUp)
   .delete("/api/planets/:id", deleteById)
+  .get("/api/users/logout", authorize, logOut)
   .listen(port, () => {
     console.log(`Server listening at https://localhost:${port}`);
   });
