@@ -9,7 +9,7 @@ const setupDb = async () => {
 
   CREATE TABLE planets (
     id SERIAL NOT NULL PRIMARY KEY,
-    name TEXT NOT NULL,
+    name TEXT NOT NULL
   );`);
 
   await db.none(`INSERT INTO planets (name) VALUES ('Earth')`);
