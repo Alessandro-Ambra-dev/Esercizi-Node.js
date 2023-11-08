@@ -1,3 +1,4 @@
+import "dotenv/config";
 import morgan from "morgan";
 import express, { Request, Response, response } from "express";
 import { request } from "http";
@@ -13,7 +14,7 @@ import {
 import multer from "multer";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 const storage = multer.diskStorage({
   destination: (request, file, callback) => {
     callback(null, "./uploads");
