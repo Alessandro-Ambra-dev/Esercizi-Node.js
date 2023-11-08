@@ -11,6 +11,7 @@ import {
   deleteById,
   createImage,
 } from "./controllers/planets";
+import { logIn, signUp } from "./controllers/users";
 import multer from "multer";
 
 const app = express();
@@ -34,6 +35,8 @@ app
   .post("/api/planets", create)
   .put("/api/planets/:id", updateById)
   .post("/api/planets/:id/image", upload.single("image"), createImage)
+  .post("/api/users/login", logIn)
+  .post("/api/users/signup", signUp)
   .delete("/api/planets/:id", deleteById)
   .listen(port, () => {
     console.log(`Server listening at https://localhost:${port}`);
